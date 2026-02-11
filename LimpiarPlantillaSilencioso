@@ -1,0 +1,21 @@
+Attribute VB_Name = "M�dulo2"
+Sub LimpiarPlantillaSilencioso()
+    ' Optimizaci�n: evita parpadeos y acelera el proceso
+    Application.ScreenUpdating = False
+    
+    ' 1. Determinar la �ltima fila con datos
+    Dim ultimaFila As Long
+    ultimaFila = Cells(Rows.Count, 1).End(xlUp).Row
+    
+    ' 2. Si hay datos m�s all� del encabezado, borrarlos
+    If ultimaFila >= 2 Then
+        ' Borra contenido de columnas A y B (ajusta el rango si usas m�s columnas)
+        Range("A2:B" & ultimaFila).ClearContents
+    End If
+    
+    ' 3. Colocar el cursor en A2 para facilitar la nueva carga
+    Range("A2").Select
+    
+    ' Reactivar actualizaci�n de pantalla
+    Application.ScreenUpdating = True
+End Sub
